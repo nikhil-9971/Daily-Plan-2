@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Plan Update</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+      body {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        font-family: "Poppins", sans-serif;
+      }
+
+      #submitBtn:hover {
+        transform: scale(1.05);
+        transition: all 0.3s ease-in-out;
+        background: linear-gradient(to right, #38a169, #2f855a);
+      }
+    </style>
+  </head>
+  <body class="flex items-center justify-center min-h-screen p-6">
+    <!-- Connect With Dashboard -->
+
+    <div class="absolute top-4 right-4 hidden md:block">
+      <a
+        href="dashboard.html"
+        class="visit-detail-link bg-blue-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:bg-blue-700 transition-all"
+      >
+        📊 Get Visit Detail
+      </a>
+    </div>
+
+    <!-- Form Layout -->
+
+    <div class="bg-white shadow-2xl rounded-3xl p-10 w-full max-w-2xl">
+      <h2 class="text-4xl font-extrabold text-center text-gray-900 mb-8">
+        🚀 Daily Plan Update
+      </h2>
+
+      <p
+        id="currentDateTime"
+        class="text-center text-lg font-medium text-gray-800"
+      ></p>
+
+      <div class="space-y-6">
+        <div>
+          <label class="block font-semibold text-lg text-gray-700"
+            >🌍 REGION:</label
+          >
+          <input
+            id="region"
+            type="text"
+            class="w-full p-4 border rounded-xl bg-gray-100 focus:ring-4 focus:ring-blue-400 shadow-lg focus:border-indigo-600"
+            readonly
+          />
+        </div>
+
+        <div>
+          <label class="block font-semibold text-lg text-gray-700"
+            >📌 RO CODE:</label
+          >
+          <input
+            id="roCode"
+            type="text"
+            class="w-full p-4 border rounded-xl focus:ring-4 focus:ring-blue-400 shadow-lg focus:border-indigo-600"
+            maxlength="8"
+          />
+        </div>
+
+        <div>
+          <label class="block font-semibold text-lg text-gray-700"
+            >🏢 RO NAME:</label
+          >
+          <input
+            id="roName"
+            type="text"
+            class="w-full p-4 border rounded-xl bg-gray-100 focus:ring-4 focus:ring-blue-400 shadow-lg focus:border-indigo-600"
+            readonly
+          />
+        </div>
+
+        <div>
+          <label class="block font-semibold text-lg text-gray-700"
+            >🔄 PHASE:</label
+          >
+          <select
+            id="phase"
+            class="w-full p-4 border rounded-xl focus:ring-4 focus:ring-blue-400 shadow-lg bg-white focus:border-indigo-600"
+          >
+            <option disabled selected>Select Phase ⬇️</option>
+            <option>HPCL/Phase-X</option>
+            <option>HPCL/Phase-IX</option>
+            <option>HPCL/Phase-XI</option>
+            <option>HPCL/Phase-XII</option>
+            <option>HPCL/Phase-XIII</option>
+            <option>JIO BP</option>
+            <option>NPL</option>
+            <option>NO PLAN</option>
+            <option>IN LEAVE</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-lg text-gray-700"
+            >👷‍♂️ Engineer Name:</label
+          >
+          <select
+            id="engineer"
+            class="w-full p-4 border rounded-xl focus:ring-4 focus:ring-blue-400 shadow-lg bg-white focus:border-indigo-600"
+          >
+            <option disabled selected>Select Engineer Name ⬇️</option>
+            <option>Abhishek Pathak</option>
+            <option>Amit Kumar</option>
+            <option>Banti Kumar</option>
+            <option>Gautam Kumar</option>
+            <option>Gautam Kumar (Purnia)</option>
+            <option>Kaushal Pandey</option>
+            <option>Raushan Kumar</option>
+            <option>Shaurav Kumar</option>
+            <option>Vinit Kumar</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-lg text-gray-700"
+            >⚠️ Issue Type:</label
+          >
+          <select
+            id="issueType"
+            class="w-full p-4 border rounded-xl focus:ring-4 focus:ring-blue-400 shadow-lg bg-white focus:border-indigo-600"
+          >
+            <option disabled selected>Select Issue Type ⬇️</option>
+            <option>Issue Visit</option>
+            <option>PM Visit</option>
+            <option>Issue & PM Visit</option>
+            <option>Survey</option>
+            <option>Power ON</option>
+            <option>SAT</option>
+            <option>NO PLAN</option>
+            <option>HPCL OFFICE</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-lg text-gray-700"
+            >📝 PURPOSE OF VISIT:</label
+          >
+          <input
+            id="purpose"
+            type="text"
+            class="w-full p-4 border rounded-xl focus:ring-4 focus:ring-blue-400 shadow-lg uppercase focus:border-indigo-600"
+            required
+            oninput="this.value = this.value.toUpperCase();"
+          />
+        </div>
+
+        <div>
+          <label class="block font-semibold text-lg text-gray-700"
+            >📅 DATE OF VISIT:</label
+          >
+          <input
+            id="date"
+            type="date"
+            class="w-full p-4 border rounded-xl focus:ring-4 focus:ring-blue-400 shadow-lg focus:border-indigo-600"
+            required
+          />
+        </div>
+      </div>
+
+      <button
+        id="submitBtn"
+        class="w-full mt-8 bg-gradient-to-r from-green-500 to-green-700 text-white py-4 px-6 rounded-xl font-bold text-lg"
+      >
+        🚀 Submit
+      </button>
+
+      <!-- for Get detail in small device -->
+
+      <div class="block md:hidden mt-4 text-center">
+        <a
+          href="dashboard.html"
+          class="visit-detail-link w-full bg-blue-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:bg-blue-700 transition-all"
+        >
+          📊 Get Visit Detail
+        </a>
+      </div>
+
+      <p class="text-gray-600 text-center mt-6 font-medium">
+        👨‍💻 Developed By Nikhil Trivedi | Version: 04.03.25
+      </p>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
