@@ -70,6 +70,11 @@ function logout() {
 
   // Reset Welcome Message
   document.getElementById("welcomeMessage").innerText = "";
+
+  // Reload the page after logout
+    setTimeout(() => {
+        location.reload();  // पेज को रीलोड करें
+    }, 1000);
 }
 
 // 🔹 **Fetch Visit Data**
